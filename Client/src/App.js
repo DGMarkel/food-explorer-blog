@@ -7,7 +7,13 @@ function App() {
   state = {
     hello: null
   }
-  
+
+  componentDidMount() {
+    axios.get('/hello')
+      .then(res => this.setState({hello: res.data}))
+      .catch(err => console.log(err));
+  };
+
   return (
     <div>
       { this.state.hello
